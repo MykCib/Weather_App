@@ -28,7 +28,7 @@ def weather_now():
         return render_template('form2.html',out="empty",gradient=gradient)
     else:
 
-        url = "http://api.openweathermap.org/data/2.5/weather?q={!s}&units=metric&appid=0a6abea71fc7316fdbb2bd0128ce5652".format(text)
+        url = "http://api.openweathermap.org/data/2.5/weather?q={!s}&units=metric&appid=****".format(text) # API key is hidden
         response = requests.request("GET", url)
 
         json = response.json()
@@ -184,15 +184,7 @@ def weather_now():
                 future.append(day)
 
             # end future wearher #
-
-            df = pd.read_csv("city.csv")
-            now = datetime.now()
-            date = '%04d-%02d-%02d  %02d:%02d:%02d' %(now.year,now.month,now.day,now.hour, now.minute, now.second)
-            to_append = {'date':date,'value':text}
-            df = df.append(to_append, ignore_index=True)
-            df.to_csv("city.csv")
-
-
+            
             return render_template('form2.html',
                 out='good',
                 city_name=city_country,
