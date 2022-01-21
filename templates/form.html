@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+<title>Weather</title>
+
+{% endblock %}
+
+{% block body %}
+<section >
+
+<div class="top">
+<h1 class="check">Check the weather forecast</h1>
+
+<div class="box">
+<form method="POST">
+    <input type="text" name="text" placeholder="City Name">
+    <br>
+    <input type="submit" value="Submit">
+</form>
+</div>
+<image></image>
+
+{% if out=="empty" %}
+
+<h3 class="please">Please enter a city name!</h3>
+
+{% endif %}
+
+{% if out=="not" %}
+
+<h3 class="please">City not found!</h3>
+
+{% endif %}
+
+</div>
+
+{% if out=="good" %}
+
+<div class="card">
+    <div class="card-body">
+    <div class="today">
+        <h1 class="city">{{ city_name }}</h1>
+        <img class="icon" src="{{source}}" >
+        <p class="tem1">Temperature: {{ temp }}°C</p>
+        <p class="tem1">Feels like: {{ feels_like }}°C</p>
+        <p class="rem">Description: {{ description }}</p>
+        <p class="rem">Wind: {{ wind_description }} ({{ wind_speed }}m/s.)</p>
+        <p class="rem">Humidity: {{ humidity }}%</p>
+    </div>
+    </div>
+</div>
+<h1 class="next">Next Week</h1>
+<div class="future">
+{% for day in future %}
+
+    <div class="future-card">
+    <div class="future-card-body">
+        <h2 class="city"> {{ day.day_name }}</h2>
+        <img class="icon" src="{{day.sources}}" >
+        <p class="tem1">Day Temperature: {{ day.day_temperature }}°C</p>
+        <p class="tem1">Night Temperature: {{ day.night_temperature }}°C</p>
+        <p class="rem">Description: {{ day.description }}</p>
+        <p class="rem">Wind: {{ day.wind_Decription }} ({{day.wind_Speed}}m/s)</p>
+        <p class="rem">Humidity: {{ day.humidity }}</p>
+    </div>
+    </div>
+
+{% endfor %}
+
+{% endif %}
+</div>
+
+</div>
+</section>
+
+{% endblock %}
+
+
+
+
+

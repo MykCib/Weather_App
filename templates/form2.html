@@ -1,0 +1,130 @@
+{% extends 'base2.html' %}
+
+
+{% block title %}
+
+<title>Weather</title>
+
+{% endblock %}
+
+{% block body %}
+<section >
+
+<div class="top">
+<h1 class="check">Check the Weather Forecast</h1>
+
+<div class="box">
+<form method="POST">
+    <input type="text" name="text" placeholder="City Name">
+    <br>
+    <input type="submit" value="Submit">
+</form>
+</div>
+
+{% if out=="empty" %}
+
+<h3 class="please">Please enter a city name!</h3>
+
+{% endif %}
+
+{% if out=="not" %}
+
+<h3 class="please">City not found!</h3>
+
+{% endif %}
+
+</div>
+
+{% if out=="good" %}
+
+<main class="main-container">
+
+    <div class="location-and-date">
+      <h1 class="location-and-date__location">{{ city_name }}</h1>
+    </div>
+  
+  
+    <div class="current-temperature">
+      <div class="current-temperature__icon-container">
+        <img src="{{source}}" class="current-temperature__icon" alt="">
+      </div>
+      <div class="current-temperature__content-container">
+        <div class="current-temperature__value">{{ temp }}&deg;</div>
+        <div class="current-temperature__summary">{{ description }}</div>
+      </div>
+    </div>
+  
+  
+    <div class="current-stats">
+      <div>
+        <div class="current-stats__value">{{ feels_like }}&deg;</div>
+        <div class="current-stats__label">Feels like</div>
+        <div class="current-stats__value">{{ humidity }}%</div>
+        <div class="current-stats__label">Humidity</div>
+      </div>
+      <div>
+        <div class="current-stats__value">{{ wind_speed }} m/s</div>
+        <div class="current-stats__label">Wind</div>
+        <div class="current-stats__value">{{ wind_description }}</div>
+        <div class="current-stats__label">Wind Description</div>
+      </div>
+     
+    </div>
+
+
+
+<div class="next-5-days">
+<h2 class="next-5-days__heading">Next 7 days</h2>
+<div class="next-5-days__container">
+
+    {% for day in future %}
+    <div class="next-5-days__row">
+
+    <div class="next-5-days__date">
+        {{ day.day_name }}
+          <div class="next-5-days__label"></div>
+        </div>
+
+        <div class="next-5-days__low">
+            {{ day.day_temperature }}&deg;
+          <div class="next-5-days__label">Day</div>
+        </div>
+
+        <div class="next-5-days__high">
+            {{ day.night_temperature }}&deg;
+          <div class="next-5-days__label">Night</div>
+        </div>
+
+        <div class="next-5-days__icon">
+          <img src="{{day.sources}}" alt="Sunny">
+        </div>
+
+        <div class="next-5-days__rain">
+            {{ day.humidity }}%
+          <div class="next-5-days__label">Humidity</div>
+        </div>
+
+        <div class="next-5-days__wind">
+            {{day.wind_Speed}} m/s
+          <div class="next-5-days__label">Wind</div>
+        </div>
+</div>
+
+{% endfor %}
+
+{% endif %}
+</div>
+</div>
+</main>
+<p class="before"></p>
+
+</section>
+
+<footer>
+  <a href="https://github.com/MykCib/Weather_App" class="fa fa-github" style="font-size:36px"></a>
+</footer>
+  
+
+{% endblock %}
+
+
