@@ -1,4 +1,4 @@
-# Weather App
+# Flask Weather App
 
 A simple weather web app made with Flask.<br>
 Weather api is from [Openweathermap](https://openweathermap.org/).<br>
