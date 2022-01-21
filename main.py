@@ -156,13 +156,13 @@ def weather_now():
                 elif day_name == "Wednesday":
                     day_name_short = "Wed"
                 elif day_name == "Thursday":
-                    day_name_short == "Thur"
+                    day_name_short = "Thur"
                 elif day_name == "Friday":
-                    day_name_short == "Fri"
+                    day_name_short = "Fri"
                 elif day_name == "Saturday":
                     day_name_short = "Sat"
-                elif day_name_short == "Sunday":
-                    day_name_short == "Sun"
+                elif day_name == "Sunday":
+                    day_name_short = "Sun"
 
 
                 # ("%s \nDay Temperature: %d°C \nNight Temperature: %d°C \nDescription: %s \nWind: %s (%s m/s) \nHumidity: %s%% \n" %(day_name,int(future_day_temp),int(future_night_temp),future_weather_description,future_wind_description,future_wind_speed,future_humidity ))
